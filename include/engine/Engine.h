@@ -29,7 +29,7 @@ struct Portfolio {
 
 class Engine{
 public:
-    explicit Engine(DataFeed& datafeed);
+    Engine(DataFeed& datafeed_, Strategy& strategy_);
 
     void run();
 
@@ -56,6 +56,7 @@ public:
 private:
     DataFeed& datafeed;
     Portfolio portfolio;
+    Strategy& strategy;
 
     void updateEquity(double markPrice);
 

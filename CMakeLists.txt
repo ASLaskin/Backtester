@@ -13,6 +13,9 @@ add_executable(backtesting
         src/MovingAverageCrossover.cpp
         include/strategy/Strategy.h
         include/strategy/util/Signal.h
+        include/strategy/util/BollingerBands.h
+        include/strategy/MeanReversion.h
+        src/MeanReversion.cpp
 )
 
 target_include_directories(backtesting

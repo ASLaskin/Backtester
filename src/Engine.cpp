@@ -4,10 +4,12 @@
 #include <iostream>
 #include "engine/Engine.h"
 #include "data/DataFeed.h"
-#include "strategy/MovingAverageCrossover.h"
+#include "strategy/util/Signal.h"
+#include "strategy/Strategy.h"
 
-Engine::Engine(DataFeed& datafeed_)
+Engine::Engine(DataFeed& datafeed_, Strategy& strategy_)
     : datafeed(datafeed_)
+    , strategy(strategy_)
     , portfolio{
         100000.0,  //cash
         false,     //position
@@ -23,8 +25,6 @@ Engine::Engine(DataFeed& datafeed_)
 
 void Engine::run(){
     auto orderOnOpen = OrderType::None;
-
-    MovingAverageCrossover strategy(0.02, 1.0);
 
     while (datafeed.next()){
         const Bar& bar = datafeed.getBar();
