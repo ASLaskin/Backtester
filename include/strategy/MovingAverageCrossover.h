@@ -4,21 +4,15 @@
 
 #ifndef BACKTESTING_MOVINGAVERAGECROSSOVER_H
 #define BACKTESTING_MOVINGAVERAGECROSSOVER_H
-#include "strategy/Indicator.h"
-
+#include "util/Indicator.h"
+#include "strategy/Strategy.h"
 //note to self: position sizing can be implement
 //so we can just assume one trade at a time
 //and just buying as many shares as we can
 
 struct Portfolio;
 
-enum class Signal {
-    Buy,
-    Sell,
-    Hold
-};
-
-class MovingAverageCrossover {
+class MovingAverageCrossover : public Strategy {
 public:
     MovingAverageCrossover(
         double stopLossPercent_,

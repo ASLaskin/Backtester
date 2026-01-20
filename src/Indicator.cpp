@@ -2,7 +2,7 @@
 // Created by Andrew Laskin on 1/13/26.
 //
 
-#include "strategy/Indicator.h"
+#include "../include/strategy/util/Indicator.h"
 
 void Indicator::onBarClose(const double &close,const double &high,const double &low) {
     SMATotal += close;

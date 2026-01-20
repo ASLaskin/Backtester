@@ -7,10 +7,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_executable(backtesting
         src/main.cpp
         src/Engine.cpp
-        include/strategy/indicator.h
+        include/strategy/util/Indicator.h
         include/strategy/MovingAverageCrossover.h
         src/Indicator.cpp
         src/MovingAverageCrossover.cpp
+        include/strategy/Strategy.h
+        include/strategy/util/Signal.h
 )
 
 target_include_directories(backtesting
