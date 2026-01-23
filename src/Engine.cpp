@@ -4,6 +4,7 @@
 #include <iostream>
 #include "engine/Engine.h"
 #include "data/DataFeed.h"
+#include "data/FileWriter.h"
 #include "strategy/util/Signal.h"
 #include "strategy/Strategy.h"
 
@@ -25,15 +26,19 @@ Engine::Engine(DataFeed& datafeed_, Strategy& strategy_)
 
 void Engine::run(){
     auto orderOnOpen = OrderType::None;
+    FileWriter file("../output.txt");
 
     while (datafeed.next()){
         const Bar& bar = datafeed.getBar();
+
+        file.writeLine(std::to_string(bar.close) + "," + std::to_string(bar.volume));
         if (orderOnOpen == OrderType::Buy) {
             portfolio.entryPrice = bar.open;
             portfolio.position = true;
             portfolio.shares = portfolio.cash / bar.open;
             portfolio.cash = 0.0;
             orderOnOpen = OrderType::None;
+            file.writeLine("Buy");
             std::cout << "Buy " << portfolio.shares << " @ " << portfolio.entryPrice << std::endl;
         }
         else if (orderOnOpen == OrderType::Sell) {
@@ -47,6 +52,7 @@ void Engine::run(){
             portfolio.position = false;
 
             portfolio.sellTradeOrders += 1;
+            file.writeLine("Sell");
             std::cout << "Sell @" << exit_price << std::endl;
             orderOnOpen = OrderType::None;
         }

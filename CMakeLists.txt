@@ -7,14 +7,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_executable(backtesting
         src/main.cpp
         src/Engine.cpp
-        include/strategy/util/Indicator.h
-        include/strategy/MovingAverageCrossover.h
         src/Indicator.cpp
         src/MovingAverageCrossover.cpp
-        include/strategy/Strategy.h
-        include/strategy/util/Signal.h
-        include/strategy/util/BollingerBands.h
-        include/strategy/MeanReversion.h
         src/MeanReversion.cpp
 )
 
