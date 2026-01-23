@@ -12,6 +12,9 @@ make
 ./backtesting
 ```
 
+To run the visualization, create a vertual enviroment, install matplotlib, and then run main.py 
+
+
 # File Directory / Classes
 
 - Engine - Brain of the program. Continues flow of data,  manages portfolio state, receives orders from the strategy, and also keeps track of PNL and Equity 
